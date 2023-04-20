@@ -1,0 +1,16 @@
+.navbar {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  background-color: var(--bg-secondary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 4rem;
+  z-index: 20;
+}
+
+.logo-image {
+  width: 30%;
+  cursor: pointer;
+}

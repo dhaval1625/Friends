@@ -1,20 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
-  /* todo: to be edited */
-  --bg-primary: #ffecec;
-  --bg-secondary: #efe0e0;
-  --text-primary: rgb(0, 0, 0);
-  --text-secondary: rgb(42, 42, 42);
+  --bg-primary: #f9f9f9;
+  --bg-secondary: #180a0a;
+  --color-primary: #711a75;
+  --color-secondary: #f10086;
+  --color-complementary: #f582a7;
+  --color-faded: #f582a774;
+  --text-primary: #000000;
+  --text-white: #ffffff;
 }
 
 body {
   min-height: 100vh;
   background-color: var(--bg-primary);
   color: var(--text-primary);
+  font-family: "Ubuntu", sans-serif;
 }
 
 .App {

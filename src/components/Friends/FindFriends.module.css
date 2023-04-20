@@ -1,0 +1,56 @@
+.container {
+  margin-left: 20%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container h1 {
+  margin-bottom: 2.5rem;
+}
+
+.container ul {
+  list-style: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-container {
+  margin: 1rem 0;
+  width: 50%;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 70% 30%;
+  font-size: 1.2rem;
+}
+
+.link-container {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+}
+
+.user-container a {
+  text-decoration: none;
+  color: inherit;
+}
+.dp {
+  width: 50px;
+  height: 50px;
+  margin-right: 1.5rem;
+}
+
+.btn-add-friend {
+  background-color: var(--bg-secondary);
+  color: var(--text-white);
+  padding: 12px;
+  width: fit-content;
+  font-size: 1rem;
+}
+
+.icon-add {
+  margin-right: 10px;
+}

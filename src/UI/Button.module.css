@@ -1,0 +1,22 @@
+.btn {
+  border: none;
+  padding: 1rem;
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  filter: brightness(90%);
+  cursor: pointer;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn:disabled:hover,
+.btn:disabled {
+  cursor: default;
+  filter: none;
+  color: inherit;
+}

@@ -1,0 +1,42 @@
+.container {
+  width: 80%;
+  background-color: white;
+  border-radius: 20px;
+  margin-bottom: 2rem;
+  padding: 1rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.actions {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.upload {
+  width: fit-content;
+  padding: 10px;
+  background-color: var(--color-primary);
+  color: var(--text-white);
+}
+
+.attach-icon {
+  font-size: 1.5rem;
+}
+
+.btn-attach-image {
+  margin-left: 2rem;
+  background-color: inherit;
+}
+
+.attach {
+  margin-right: 3px;
+}
+
+.btn-attach-image p {
+  display: inline-block;
+}

@@ -1,0 +1,33 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 1rem;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
+  animation: slide-down 0.8s forwards;
+}
+
+@keyframes slide-down {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.btn-add-comment {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  margin-top: 2rem;
+  font-size: 1.4rem;
+  background-color: var(--color-secondary);
+  color: var(--text-white);
+}

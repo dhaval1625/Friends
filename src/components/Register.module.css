@@ -1,0 +1,110 @@
+.container {
+  width: 80%;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 0 3px 3px var(--color-primary);
+}
+
+.form-container {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  row-gap: 20px;
+}
+
+.dp-container {
+  grid-column: 1/3;
+  align-items: center;
+}
+
+.dp-container img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+
+.dp-container div {
+  margin-top: 1rem;
+  flex-direction: row !important;
+  align-items: flex-end;
+}
+
+.btn-upload-dp {
+  margin-left: -25px;
+  width: 45px;
+  height: 45px;
+  padding: 0;
+  background-color: var(--color-complementary);
+  font-size: 1.5rem;
+  border-radius: 50%;
+}
+
+.form-container div {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container input,
+.form-container select {
+  padding: 0.6rem;
+  border-radius: 10px;
+  margin: 10px 0;
+  font-size: 1rem;
+  border: 0.3px solid rgba(128, 128, 128, 0.24);
+  width: 70%;
+}
+
+.form-container input:focus,
+.form-container select:focus {
+  outline: none;
+  box-shadow: 0 0 2px 2px var(--color-primary);
+}
+
+.btn-register {
+  grid-column: 1/3;
+  justify-self: center;
+  margin: 10px 0;
+  background-color: var(--color-complementary);
+  font-size: 1.2rem;
+  width: 40%;
+}
+
+.info {
+  margin-top: 40px;
+}
+
+.link-login {
+  margin-left: 10px;
+  text-decoration: none;
+  color: var(--color-primary);
+  transition: all 0.5s;
+}
+
+.link-login:hover {
+  color: var(--color-secondary);
+}
+
+.error {
+  color: rgb(228, 64, 64);
+}
+
+.pwd-container {
+  position: relative;
+  width: 70%;
+}
+
+.pwd-container input {
+  width: 100%;
+}
+
+.btn-toggle-visible {
+  border: none;
+  background-color: transparent;
+  width: fit-content;
+  cursor: pointer;
+  font-size: 1rem;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
