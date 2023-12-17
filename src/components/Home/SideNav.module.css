@@ -4,7 +4,7 @@
   width: 20%;
   height: 100vh;
   padding-top: 1rem;
-  background-color: var(--color-primary);
+  background: var(--gradient-primary);
   color: var(--text-white);
 }
 

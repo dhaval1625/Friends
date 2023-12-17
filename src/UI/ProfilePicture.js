@@ -13,7 +13,7 @@ function ProfilePicture(props) {
     <img
       className={`${classes["profile-picture"]} ${props.className}`}
       src={srcDP || userImage}
-      alt="User Display Picture"
+      alt="User DP"
     />
   );
 }

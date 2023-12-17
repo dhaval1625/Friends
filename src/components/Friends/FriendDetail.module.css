@@ -1,0 +1,75 @@
+.user-container {
+  margin: 1rem 0;
+  width: 50%;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 70% 30%;
+  font-size: 1.2rem;
+}
+
+.link-container {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+}
+
+.user-container a {
+  text-decoration: none;
+  color: inherit;
+}
+.dp {
+  width: 50px;
+  height: 50px;
+  margin-right: 1.5rem;
+}
+
+.btn-add-friend {
+  background-color: var(--bg-secondary);
+  color: var(--text-white);
+  padding: 12px;
+  width: fit-content;
+  font-size: 1rem;
+}
+
+.btn-remove-friend {
+  background-color: transparent;
+  padding: 12px;
+  width: fit-content;
+}
+
+.btn-remove-friend:hover {
+  background-color: var(--color-complementary);
+}
+
+.icon-add {
+  margin-right: 10px;
+}
+
+.btn-friend {
+  background-color: transparent;
+  color: var(--text-primary);
+  font-size: 1rem;
+  width: fit-content;
+  padding: 0;
+}
+
+.actions {
+  display: flex;
+  width: 100%;
+}
+
+.btn-accept,
+.btn-deny {
+  background-color: transparent;
+  padding: 0;
+  font-size: 0.9rem;
+}
+
+.btn-accept {
+  margin-right: 2rem;
+  /* color: rgb(37, 144, 243); */
+}
+
+.btn-deny {
+  color: var(--color-secondary);
+}

@@ -15,6 +15,7 @@ import { useEffect, useState } from "react";
 import { postActions } from "../../store/post-slice";
 import Modal from "../../UI/Modal";
 import Comment from "./Comment";
+import { Link } from "react-router-dom";
 
 function Post(props) {
   const {
@@ -29,6 +30,9 @@ function Post(props) {
     totalLikes,
     totalComments,
   } = props.data;
+  const userState = useSelector((state) => state.users.users);
+  const authorId = userState.find((user) => user.userName === author).id;
+
   const authUser = useSelector((state) => state.users.authUser);
   const dispatch = useDispatch();
   const [liked, setLiked] = useState(false);
@@ -45,7 +49,7 @@ function Post(props) {
       );
       if (likedByAuthUser) setLiked(true);
     }
-  }, [likes]);
+  }, [likes, authUser]);
 
   // * Like functionality
   function toggleLikeHandler() {
@@ -127,14 +131,14 @@ function Post(props) {
           hideModal={hideCommentModalHandler}
         />
       )}
-      <div className={classes.author}>
+      <Link to={`/home/profile/${authorId}`} className={classes.author}>
         <img
           className={classes["author-image"]}
           src={authorDP || userImage}
-          alt="author profile picture"
+          alt="author"
         />
         <h4>{author}</h4>
-      </div>
+      </Link>
       <div className={classes.post}>
         <p>{content}</p>
       </div>

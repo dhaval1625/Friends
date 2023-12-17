@@ -12,9 +12,14 @@
   --color-primary: #711a75;
   --color-secondary: #f10086;
   --color-complementary: #f582a7;
+
   --color-faded: #f582a774;
+  --color-faded-1: #180a0a73;
+
   --text-primary: #000000;
   --text-white: #ffffff;
+
+  --gradient-primary: linear-gradient(to top left, #701a754f, #f100853f);
 }
 
 body {

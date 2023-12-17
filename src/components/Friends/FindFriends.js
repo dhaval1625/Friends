@@ -1,37 +1,35 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Button from "../../UI/Button";
-import ProfilePicture from "../../UI/ProfilePicture";
-import classes from "./FindFriends.module.css";
-import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import userImage from "../../images/user.png";
+import FriendDetail from "./FriendDetail";
+
+import classes from "./FindFriends.module.css";
 
 function FindFriends() {
-  const authUser = useSelector((state) => state.users.authUser);
   const users = useSelector((state) => state.users.users);
-  const usersToDisplay = users.filter((user) => user.id !== authUser.id);
+  const authUser = useSelector((state) => state.users.authUser);
+  const authUserToDisplay = users.find((user) => user.id === authUser.id);
+  const friends = authUserToDisplay.friends;
+  const friendRequests = authUserToDisplay.friendRequests;
+  const usersToDisplay = users.filter(
+    (user) =>
+      user.id !== authUserToDisplay.id &&
+      !friends?.find((friend) => friend === user.id) &&
+      !friendRequests?.find((request) => request.userId === user.id)
+  );
 
   return (
     <section className={classes.container}>
-      <h1>Here are some suggestions...</h1>
+      <h2>Here are some suggestions...</h2>
       <ul>
         {usersToDisplay.map((user) => (
-          <li key={user.id} className={classes["user-container"]}>
-            <Link
-              to={`/home/profile/${user.id}`}
-              className={classes["link-container"]}
-            >
-              <ProfilePicture dp={user.profilePicture} className={classes.dp} />
-              <p>{user.userName}</p>
-            </Link>
-            <Button className={classes["btn-add-friend"]}>
-              <FontAwesomeIcon
-                className={classes["icon-add"]}
-                icon={faUserPlus}
-              />
-              Add Friend
-            </Button>
-          </li>
+          <FriendDetail
+            key={user.id}
+            id={user.id}
+            dp={user.profilePicture || userImage}
+            friendRequests={user.friendRequests || null}
+            userName={user.userName}
+            authUser={authUserToDisplay}
+          />
         ))}
       </ul>
     </section>

@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { v4 as uuid } from "uuid";
 import { POSTDATA_URL } from "../helpers/config";
+import { ref, set } from "firebase/database";
+import { database } from "./firebase";
 
 const postSlice = createSlice({
   name: "posts",
@@ -102,13 +104,12 @@ export const postActions = postSlice.actions;
 export default postSlice;
 
 export function sendPosts(posts) {
-  return async function (dispatch) {
-    const res = await fetch(POSTDATA_URL, {
-      method: "PUT",
-      body: JSON.stringify(posts),
-    });
-
-    if (!res.ok) throw new Error("Failed to upload post!");
+  return async function () {
+    try {
+      set(ref(database, "posts"), posts);
+    } catch (error) {
+      console.log(error);
+    }
   };
 }
 
