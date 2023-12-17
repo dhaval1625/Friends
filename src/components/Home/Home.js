@@ -1,5 +1,3 @@
-import { Fragment } from "react";
-import SideNav from "./SideNav";
 import MainContent from "./MainContent";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -20,12 +18,7 @@ function Home() {
     }
   }, [postState, dispatch]);
 
-  return (
-    <Fragment>
-      <SideNav />
-      <MainContent />
-    </Fragment>
-  );
+  return <MainContent />;
 }
 
 export default Home;

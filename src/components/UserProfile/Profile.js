@@ -4,6 +4,7 @@ import Button from "../../UI/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPen, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
+import userImage from "../../images/user.png";
 
 function Profile(props) {
   const users = useSelector((state) => state.users.users);
@@ -15,7 +16,7 @@ function Profile(props) {
     <section className={classes.container}>
       <div className={classes["dp-container"]}>
         <ProfilePicture
-          dp={userToDisplay.profilePicture}
+          dp={userToDisplay.profilePicture || userImage}
           className={classes.dp}
         />
       </div>

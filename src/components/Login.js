@@ -2,7 +2,6 @@ import { Form, Link, useActionData, useNavigate } from "react-router-dom";
 import Button from "../UI/Button";
 import connectingImage from "../images/connecting.svg";
 import classes from "./Login.module.css";
-import { redirect } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../store/firebase";
 import { useDispatch } from "react-redux";

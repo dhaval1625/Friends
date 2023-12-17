@@ -75,3 +75,8 @@
   color: gray;
   cursor: pointer;
 }
+
+.post-container a {
+  color: inherit;
+  text-decoration: none;
+}

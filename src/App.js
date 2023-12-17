@@ -6,9 +6,9 @@ import RegisterPage, { registerAction } from "./pages/Register";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "./store/firebase";
 import HomePage from "./pages/Home";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchUserData } from "./store/user-slice";
+import { fetchUserData, sendUserData, userActions } from "./store/user-slice";
 import { loginAction } from "./components/Login";
 import ErrorPage from "./pages/Error";
 import ProfilePage from "./pages/Profile";
@@ -61,9 +61,18 @@ const router = createBrowserRouter([
 function App() {
   const dispatch = useDispatch();
 
+  const userState = useSelector((state) => state.users);
+
   useEffect(() => {
     dispatch(fetchUserData());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (userState.changedUsers === true) {
+      dispatch(sendUserData(userState.users));
+      dispatch(userActions.resetChange());
+    }
+  }, [userState, dispatch]);
 
   useEffect(() => {
     const logoutHandler = async function () {

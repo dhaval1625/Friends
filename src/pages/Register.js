@@ -29,11 +29,7 @@ export async function registerAction({ request, params }) {
   const password = data.get("password");
 
   try {
-    const newUser = await createUserWithEmailAndPassword(
-      auth,
-      userData.email,
-      password
-    );
+    await createUserWithEmailAndPassword(auth, userData.email, password);
 
     return {
       message:

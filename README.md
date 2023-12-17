@@ -1,5 +1,5 @@
-# Friends App
+# Friends - A social media app
 
-Register in this app. Login to see what others are doing, make friends and add posts to share your thoughts with others.
+Made for fun - using React, firebase
 
-Live site: https://friends-2507.vercel.app/
+Come, have fun posting new updates, getting likes and comments on them and also like other's updates, so they feel warm 😉. 

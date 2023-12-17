@@ -1,9 +1,9 @@
 import { Form, Link, useActionData, useNavigation } from "react-router-dom";
 import Button from "../UI/Button";
 import classes from "./Register.module.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useEffect, useRef, useState } from "react";
-import { sendUserData, userActions } from "../store/user-slice";
+import { userActions } from "../store/user-slice";
 import userImage from "../images/user.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -14,6 +14,7 @@ import {
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../store/firebase";
 import imageCompression from "browser-image-compression";
+import { v4 as uuid } from "uuid";
 
 function Register() {
   const data = useActionData();
@@ -23,48 +24,50 @@ function Register() {
   const [fileURL, setFileURL] = useState(null);
   const [pwdType, setPwdType] = useState("password");
 
+  const [updated, setUpdated] = useState(false);
+
   const nav = useNavigation();
   const sending = nav.state === "submitting";
 
   const dispatch = useDispatch();
-  const userState = useSelector((state) => state.users);
 
   useEffect(() => {
     if (data && data.userData) {
-      const fullUserData = { ...data.userData, profilePictureURL: dpURL };
+      const uploadImage = async function () {
+        const options = {
+          maxSizeMB: 0.3,
+          maxWidthOrHeight: 1920,
+          useWebWorker: true,
+        };
+        const compressedImage = await imageCompression(DP, options);
 
-      dispatch(userActions.addUser(fullUserData));
+        const path = ref(storage, `dp-images/${uuid()}`);
+
+        await uploadBytes(path, compressedImage);
+        const url = await getDownloadURL(path);
+        setDpURL(url);
+        setUpdated(true);
+      };
+
+      DP ? uploadImage() : setUpdated(true);
     }
   }, [data, dispatch]);
 
   useEffect(() => {
-    if (userState.changedUsers === true) {
-      dispatch(sendUserData(userState.users));
-      dispatch(userActions.resetChange());
+    if (updated) {
+      const fullUserData = { ...data.userData, profilePictureURL: dpURL };
+      dispatch(userActions.addUser(fullUserData));
     }
-  }, [userState, dispatch]);
+  }, [updated, dispatch]);
 
   function uploadImageHandler() {
     uploadDP.current.click();
   }
 
   // * This function will upload the image to firebase
-  async function displayImageHandler(e) {
+  function displayImageHandler(e) {
     const displayPicture = e.target.files[0];
     setDP(displayPicture);
-
-    const options = {
-      maxSizeMB: 0.3,
-      maxWidthOrHeight: 1920,
-      useWebWorker: true,
-    };
-    const compressedImage = await imageCompression(displayPicture, options);
-
-    const path = ref(storage, `dp-images/${displayPicture.name}`);
-
-    await uploadBytes(path, compressedImage);
-    const url = await getDownloadURL(path);
-    setDpURL(url);
   }
 
   // * This will read the uploaded image and display it on preview

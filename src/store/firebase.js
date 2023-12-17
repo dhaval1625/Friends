@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
+import { getDatabase } from "firebase/database";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Firebase configuration
@@ -11,6 +12,8 @@ const firebaseConfig = {
   storageBucket: "friends-c2500.appspot.com",
   messagingSenderId: "962253731987",
   appId: "1:962253731987:web:2e821b2b609a5dc3c0b566",
+  databaseURL:
+    "https://friends-c2500-default-rtdb.asia-southeast1.firebasedatabase.app/",
 };
 
 // Initialize Firebase
@@ -18,3 +21,4 @@ const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
 export const storage = getStorage(app);
+export const database = getDatabase(app);
